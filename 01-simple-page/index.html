@@ -6,15 +6,22 @@
     <body>
         <div id="app">
             <h1 v-text="deckName"></h1>
+
+            <div>
+                <h2 v-text="cards[0].front"></h2>
+                <div v-html="cards[0].back"></div>
+            </div>
         </div>
         
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="data.js"></script>
         <script>
             const App = {
                 data() {
                     return {
-                        deckName: 'Simple app'
+                        deckName: 'Simple app',
+                        cards
                     };
                 }
             }
