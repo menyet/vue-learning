@@ -8,6 +8,18 @@
             <h1 v-text="deckName"></h1>
 
             <div>
+                One way: <span v-html="userInput"></span>
+                <input type="text" :value="userInput" />
+            </div>
+
+            <div>
+                Two way: <span v-html="userInput2"></span>
+                <input type="text" v-model="userInput2" />
+            </div>
+
+            
+
+            <div>
                 <h2 v-text="cards[0].front"></h2>
                 <div v-html="cards[0].back"></div>
             </div>
@@ -21,7 +33,9 @@
                 data() {
                     return {
                         deckName: 'Simple app',
-                        cards
+                        cards,
+                        userInput: 'default',
+                        userInput2: 'default'
                     };
                 }
             }
