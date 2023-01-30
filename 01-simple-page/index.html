@@ -1,0 +1,25 @@
+<html>
+    <header>
+        <title>Simple page</title>
+    </header>
+
+    <body>
+        <div id="app">
+            <h1 v-text="deckName"></h1>
+        </div>
+        
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+            const App = {
+                data() {
+                    return {
+                        deckName: 'Simple app'
+                    };
+                }
+            }
+
+            Vue.createApp(App).mount('#app')
+        </script>
+    </body>
+</html>
