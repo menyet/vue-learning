@@ -1,4 +1,4 @@
-# navigable-app
+# 02-navigable-app
 
 ## Project setup
 ```
