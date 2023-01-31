@@ -19,10 +19,14 @@
 
             
 
-            <div>
-                <h2 v-text="cards[0].front"></h2>
-                <div v-html="cards[0].back"></div>
+            <div @click="flipped = !flipped">
+                <h2 v-text="flipped ? '' : cards[index].front"></h2>
+                <div v-html="flipped ? cards[index].back : ''"></div>
             </div>
+
+            <!-- v-on:click="move" -->
+            <button @click="move(-1)">Backward</button>
+            <button @click="move(1)">Forward</button>
         </div>
         
 
@@ -35,12 +39,21 @@
                         deckName: 'Simple app',
                         cards,
                         userInput: 'default',
-                        userInput2: 'default'
+                        userInput2: 'default',
+                        flipped: false,
+                        index: 0
                     };
+                },
+                methods: {
+                    move(direction) {
+                        if (this.cards[this.index + direction]) {
+                            this.index += direction;
+                        }
+                    }
                 }
             }
 
-            Vue.createApp(App).mount('#app')
+            const app = Vue.createApp(App).mount('#app')
         </script>
     </body>
 </html>
