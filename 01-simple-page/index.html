@@ -18,12 +18,8 @@
             </div>
 
             
-
-            <div @click="flipped = !flipped">
-                <h2 v-text="flipped ? '' : cards[index].front"></h2>
-                <div v-html="flipped ? cards[index].back : ''"></div>
-            </div>
-
+            <card @flip="flipped = !flipped" :flipped="flipped" front="Front" back="Back"></card>
+            
             <!-- v-on:click="move" -->
             <button @click="move(-1)">Backward</button>
             <button @click="move(1)">Forward</button>
@@ -82,6 +78,14 @@
                 template: '<a :href="url" v-html="\'asd\'"></a>',
                 name: 'ReadMore',
                 props: ['url']
+            });
+
+            app.component('card', {
+                template: '<div @click="$emit(\'flip\')"> \
+                                <h2 v-text="flipped ? front : back"></h2> \
+                                <div v-html="flipped ? back : front"></div> \
+                            </div>',
+                props: ['flipped', 'front', 'back']
             });
             
             app.mount('#app')
