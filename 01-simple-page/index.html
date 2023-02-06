@@ -27,6 +27,14 @@
             <!-- v-on:click="move" -->
             <button @click="move(-1)">Backward</button>
             <button @click="move(1)">Forward</button>
+
+            <div>
+                <input type="checkbox" v-model="show">Show</input>
+                <!-- added/removed from DOM -->
+                <span v-if="show">Some text</span>
+                <!-- display:none, but still in the DOM -->
+                <span v-show="show">Some text</span>
+            </div>
         </div>
         
 
@@ -41,7 +49,8 @@
                         userInput: 'default',
                         userInput2: 'default',
                         flipped: false,
-                        index: 0
+                        index: 0,
+                        show: false,
                     };
                 },
                 methods: {
