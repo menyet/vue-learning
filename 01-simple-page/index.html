@@ -33,7 +33,16 @@
             </div>
 
             <div :style="[ style1, style2, { fontWeight: 'bold'} ]">
-                <read-more :url="url"></read-more>
+                <read-more :url="url">
+                    <em>Click to read more</em>
+                </read-more>
+            </div>
+            <div :style="[ style1, style2, { fontWeight: 'bold'} ]">
+                <read-more url="https://hardcoded.url/read">
+                    <em v-html="linkText"></em>
+                </read-more>
+            </div>
+            <div :style="[ style1, style2, { fontWeight: 'bold'} ]">
                 <read-more url="https://hardcoded.url/read"></read-more>
             </div>
         </div>
@@ -75,7 +84,7 @@
             const app = Vue.createApp(App);
             
             app.component('read-more', {
-                template: '<a :href="url" v-html="\'asd\'"></a>',
+                template: '<a :href="url"><slot>Default text</slot></a>',
                 name: 'ReadMore',
                 props: ['url']
             });
