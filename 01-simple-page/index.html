@@ -37,7 +37,8 @@
             </div>
 
             <div :style="[ style1, style2, { fontWeight: 'bold'} ]">
-                <a :href="url" v-html="'Link'"></a>
+                <read-more :url="url"></read-more>
+                <read-more url="https://hardcoded.url/read"></read-more>
             </div>
         </div>
         
@@ -75,7 +76,15 @@
                 }
             }
 
-            const app = Vue.createApp(App).mount('#app')
+            const app = Vue.createApp(App);
+            
+            app.component('read-more', {
+                template: '<a :href="url" v-html="\'asd\'"></a>',
+                name: 'ReadMore',
+                props: ['url']
+            });
+            
+            app.mount('#app')
         </script>
     </body>
 </html>
