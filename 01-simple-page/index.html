@@ -47,6 +47,60 @@
             <div :style="[ style1, style2, { fontWeight: 'bold'} ]">
                 <read-more url="https://hardcoded.url/read"></read-more>
             </div>
+
+            <div>
+                <ul>
+                    <li v-for="(item, id) in cards">{{id}} - {{item.front}}</li>
+                </ul>
+            </div>
+
+                        <div>
+                <ul>
+                    <li v-for="(item, id) in 8">{{id}} - {{item}}</li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <template v-for="(item, index) in 8">
+                        <li>{{ item }}</li>
+                        <li>{{index}}</li>
+                    </template>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li v-for="(alias, key, index) in object">
+                        {{index}} - {{key}} - {{alias}}
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <template v-for="(alias, key, index) in object">
+                        <li>
+                            {{index}} - {{key}} - {{alias}}
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <!--
+                NOT RECOMMENDED, but v-if has a higher priority
+            <li v-for="todo in todos" v-if="!todo.isComplete">
+                {{ todo.name }}
+            </li>
+
+                TO INVERT THE PRORITY:
+
+                <template v-for="todo in todos">
+                <li v-if="!todo.isComplete">
+                    {{ todo.name }}
+                </li>
+                </template>
+            -->
         </div>
         
 
@@ -71,7 +125,12 @@
                         style2: {
                             'font-size': '24px',
                         },
-                        linkText: 'Link'
+                        linkText: 'Link',
+                        object: {
+                            propA: 'Lorem ipsum',
+                            propB: 1456,
+                            propC: 'asd'
+                        },
                     };
                 },
                 methods: {
