@@ -5,6 +5,10 @@
 
     <body>
         <div id="app">
+            <input type="text" v-model="number" />
+
+            <em v-if="error" style="color:red">{{error}}</em>
+            {{number}}
         </div>
         
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -12,10 +16,17 @@
             const App = {
                 data() {
                     return {
+                        number: null,
+                        error: null,
                     };
                 },
                 methods: {
                 },
+                watch: {
+                    number(value) {
+                        this.error = value == "1" ? null : "Invalid value"
+                    }
+                }
             }
 
             const app = Vue.createApp(App);
