@@ -101,6 +101,30 @@
                 </li>
                 </template>
             -->
+
+            <div>
+                <select v-model="selectValue">
+                    <option disabled>Choose...</option>
+                    <option>Option A</option>
+                    <option value="2">Option B</option>
+                    <option>Option C</option>
+                </select>
+                <p>Value: "{{selectValue}}"</p>
+            </div>
+
+            <!--
+                The .number modifier converts value to numbers instead of "1", "2" strings
+            -->
+            <div>
+                <select multiple v-model.number="selectValues">
+                    <option disabled>Choose...</option>
+                    <option value="1">Option A</option>
+                    <option value="a">Option B</option>
+                    <option value="3">Option C</option>
+                    <option v-for="option in options" :value="option.value">{{option.title}}</option>
+                </select>
+                <p>Value: "{{selectValues}}"</p>
+            </div>
         </div>
         
 
@@ -131,6 +155,12 @@
                             propB: 1456,
                             propC: 'asd'
                         },
+                        selectValue: null,
+                        options: [
+                            { title: 'Dynamic option 1', value: 101 },
+                            { title: 'Dynamic option 2', value: 102 },
+                        ],
+                        selectValues: [],
                     };
                 },
                 methods: {
